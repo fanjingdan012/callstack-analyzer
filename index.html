@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>Sankey Layout Alignment</title>
+<style>
+  body {
+    font: 16px Sans-serif;
+  }
+
+  .node rect {
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+  }
+
+  .node text {
+    font: 10px sans-serif;
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+  }
+
+  .link {
+    fill: none;
+    stroke: darkblue;
+    stroke-opacity: .2;
+  }
+
+  .link:hover {
+    stroke-opacity: .5;
+  }
+</style>
+
+<body>
+
+  <div id="chart"></div>
+
+  <br/>
+
+  <div align="center">
+    <b>Layout alignment: </b>
+    <input class="sankey-align" type="radio" name="sankey-align" value="left"> Left &nbsp;
+    <input class="sankey-align" type="radio" name="sankey-align" value="center"> Center &nbsp;
+    <input class="sankey-align" type="radio" name="sankey-align" value="right"> Right &nbsp;
+    <input class="sankey-align" type="radio" name="sankey-align" value="justify" checked="checked"> Justify &nbsp;
+  </div>
+  
+  <div align="center">
+    <b>data: </b>
+    <textarea rows="5" cols="200" id="dataarea">
+{"nodes": [{"name": "org.springframework.beans.factory.support.DefaultListableBeanFactory.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "DefaultListableBeanFactory", "package": "org.springframework.beans.factory.support", "position": "DefaultListableBeanFactory.java:792", "springtype": "DefaultListableBeanFactory"}, {"name": "org.springframework.context.support.GenericApplicationContext.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "GenericApplicationContext", "package": "org.springframework.context.support", "position": "GenericApplicationContext.java:321", "springtype": "Context"}, {"name": "org.springframework.context.annotation.AnnotationConfigUtils.registerPostProcessor", "method": "registerPostProcessor", "clazz": "AnnotationConfigUtils", "package": "org.springframework.context.annotation", "position": "AnnotationConfigUtils.java:219", "springtype": "Utils"}, {"name": "org.springframework.context.annotation.AnnotationConfigUtils.registerAnnotationConfigProcessors", "method": "registerAnnotationConfigProcessors", "clazz": "AnnotationConfigUtils", "package": "org.springframework.context.annotation", "position": "AnnotationConfigUtils.java:164", "springtype": "Utils"}, {"name": "org.springframework.context.annotation.AnnotatedBeanDefinitionReader.<init>", "method": "<init>", "clazz": "AnnotatedBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "AnnotatedBeanDefinitionReader.java:87", "springtype": "Reader"}, {"name": "org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext.<init>", "method": "<init>", "clazz": "AnnotationConfigServletWebServerApplicationContext", "package": "org.springframework.boot.web.servlet.context", "position": "AnnotationConfigServletWebServerApplicationContext.java:73", "springtype": "Context"}, {"name": "sun.reflect.NativeConstructorAccessorImpl.newInstance0", "method": "newInstance0", "clazz": "NativeConstructorAccessorImpl", "package": "sun.reflect", "position": "Native Method", "springtype": "NativeConstructorAccessorImpl"}, {"name": "sun.reflect.NativeConstructorAccessorImpl.newInstance", "method": "newInstance", "clazz": "NativeConstructorAccessorImpl", "package": "sun.reflect", "position": "NativeConstructorAccessorImpl.java:62", "springtype": "NativeConstructorAccessorImpl"}, {"name": "sun.reflect.DelegatingConstructorAccessorImpl.newInstance", "method": "newInstance", "clazz": "DelegatingConstructorAccessorImpl", "package": "sun.reflect", "position": "DelegatingConstructorAccessorImpl.java:45", "springtype": "DelegatingConstructorAccessorImpl"}, {"name": "java.lang.reflect.Constructor.newInstance", "method": "newInstance", "clazz": "Constructor", "package": "java.lang.reflect", "position": "Constructor.java:423", "springtype": "Constructor"}, {"name": "org.springframework.beans.BeanUtils.instantiateClass", "method": "instantiateClass", "clazz": "BeanUtils", "package": "org.springframework.beans", "position": "BeanUtils.java:170", "springtype": "Utils"}, {"name": "org.springframework.boot.SpringApplication.createApplicationContext", "method": "createApplicationContext", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:595", "springtype": "Application"}, {"name": "org.springframework.boot.SpringApplication.run", "method": "run", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:321", "springtype": "Application"}, {"name": "com.fjd.ssm.SSMApplication.main", "method": "main", "clazz": "SSMApplication", "package": "com.fjd.ssm", "position": "SSMApplication.java:14", "springtype": "Application"}, {"name": "org.springframework.beans.factory.support.DefaultListableBeanFactory.registerSingleton", "method": "registerSingleton", "clazz": "DefaultListableBeanFactory", "package": "org.springframework.beans.factory.support", "position": "DefaultListableBeanFactory.java:953", "springtype": "DefaultListableBeanFactory"}, {"name": "org.springframework.boot.autoconfigure.condition.ConditionEvaluationReport.get", "method": "get", "clazz": "ConditionEvaluationReport", "package": "org.springframework.boot.autoconfigure.condition", "position": "ConditionEvaluationReport.java:173", "springtype": "ConditionEvaluationReport"}, {"name": "org.springframework.boot.autoconfigure.diagnostics.analyzer.NoSuchBeanDefinitionFailureAnalyzer.setBeanFactory", "method": "setBeanFactory", "clazz": "NoSuchBeanDefinitionFailureAnalyzer", "package": "org.springframework.boot.autoconfigure.diagnostics.analyzer", "position": "NoSuchBeanDefinitionFailureAnalyzer.java:70", "springtype": "NoSuchBeanDefinitionFailureAnalyzer"}, {"name": "org.springframework.boot.diagnostics.FailureAnalyzers.prepareAnalyzer", "method": "prepareAnalyzer", "clazz": "FailureAnalyzers", "package": "org.springframework.boot.diagnostics", "position": "FailureAnalyzers.java:98", "springtype": "FailureAnalyzers"}, {"name": "org.springframework.boot.diagnostics.FailureAnalyzers.prepareFailureAnalyzers", "method": "prepareFailureAnalyzers", "clazz": "FailureAnalyzers", "package": "org.springframework.boot.diagnostics", "position": "FailureAnalyzers.java:91", "springtype": "FailureAnalyzers"}, {"name": "org.springframework.boot.diagnostics.FailureAnalyzers.<init>", "method": "<init>", "clazz": "FailureAnalyzers", "package": "org.springframework.boot.diagnostics", "position": "FailureAnalyzers.java:66", "springtype": "FailureAnalyzers"}, {"name": "org.springframework.boot.SpringApplication.createSpringFactoriesInstances", "method": "createSpringFactoriesInstances", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:444", "springtype": "Application"}, {"name": "org.springframework.boot.SpringApplication.getSpringFactoriesInstances", "method": "getSpringFactoriesInstances", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:427", "springtype": "Application"}, {"name": "org.springframework.boot.context.config.DelegatingApplicationListener.onApplicationEvent", "method": "onApplicationEvent", "clazz": "DelegatingApplicationListener", "package": "org.springframework.boot.context.config", "position": "DelegatingApplicationListener.java:67", "springtype": "Listener"}, {"name": "org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener", "method": "doInvokeListener", "clazz": "SimpleApplicationEventMulticaster", "package": "org.springframework.context.event", "position": "SimpleApplicationEventMulticaster.java:172", "springtype": "Multicaster"}, {"name": "org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener", "method": "invokeListener", "clazz": "SimpleApplicationEventMulticaster", "package": "org.springframework.context.event", "position": "SimpleApplicationEventMulticaster.java:165", "springtype": "Multicaster"}, {"name": "org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent", "method": "multicastEvent", "clazz": "SimpleApplicationEventMulticaster", "package": "org.springframework.context.event", "position": "SimpleApplicationEventMulticaster.java:139", "springtype": "Multicaster"}, {"name": "org.springframework.boot.context.event.EventPublishingRunListener.contextLoaded", "method": "contextLoaded", "clazz": "EventPublishingRunListener", "package": "org.springframework.boot.context.event", "position": "EventPublishingRunListener.java:91", "springtype": "Listener"}, {"name": "org.springframework.boot.SpringApplicationRunListeners.contextLoaded", "method": "contextLoaded", "clazz": "SpringApplicationRunListeners", "package": "org.springframework.boot", "position": "SpringApplicationRunListeners.java:66", "springtype": "SpringApplicationRunListeners"}, {"name": "org.springframework.boot.SpringApplication.prepareContext", "method": "prepareContext", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:391", "springtype": "Application"}, {"name": "org.springframework.beans.factory.support.DefaultListableBeanFactory.registerResolvableDependency", "method": "registerResolvableDependency", "clazz": "DefaultListableBeanFactory", "package": "org.springframework.beans.factory.support", "position": "DefaultListableBeanFactory.java:608", "springtype": "DefaultListableBeanFactory"}, {"name": "org.springframework.context.support.AbstractApplicationContext.prepareBeanFactory", "method": "prepareBeanFactory", "clazz": "AbstractApplicationContext", "package": "org.springframework.context.support", "position": "AbstractApplicationContext.java:652", "springtype": "Context"}, {"name": "org.springframework.context.support.AbstractApplicationContext.refresh", "method": "refresh", "clazz": "AbstractApplicationContext", "package": "org.springframework.context.support", "position": "AbstractApplicationContext.java:525", "springtype": "Context"}, {"name": "org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh", "method": "refresh", "clazz": "ServletWebServerApplicationContext", "package": "org.springframework.boot.web.servlet.context", "position": "ServletWebServerApplicationContext.java:140", "springtype": "Context"}, {"name": "org.springframework.boot.SpringApplication.refresh", "method": "refresh", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:759", "springtype": "Application"}, {"name": "org.springframework.boot.SpringApplication.refreshContext", "method": "refreshContext", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:395", "springtype": "Application"}, {"name": "org.springframework.beans.factory.support.BeanDefinitionReaderUtils.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "BeanDefinitionReaderUtils", "package": "org.springframework.beans.factory.support", "position": "BeanDefinitionReaderUtils.java:150", "springtype": "Utils"}, {"name": "org.springframework.context.annotation.ClassPathBeanDefinitionScanner.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "ClassPathBeanDefinitionScanner", "package": "org.springframework.context.annotation", "position": "ClassPathBeanDefinitionScanner.java:319", "springtype": "Scanner"}, {"name": "org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan", "method": "doScan", "clazz": "ClassPathBeanDefinitionScanner", "package": "org.springframework.context.annotation", "position": "ClassPathBeanDefinitionScanner.java:291", "springtype": "Scanner"}, {"name": "org.springframework.context.annotation.ComponentScanAnnotationParser.parse", "method": "parse", "clazz": "ComponentScanAnnotationParser", "package": "org.springframework.context.annotation", "position": "ComponentScanAnnotationParser.java:132", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass", "method": "doProcessConfigurationClass", "clazz": "ConfigurationClassParser", "package": "org.springframework.context.annotation", "position": "ConfigurationClassParser.java:288", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass", "method": "processConfigurationClass", "clazz": "ConfigurationClassParser", "package": "org.springframework.context.annotation", "position": "ConfigurationClassParser.java:245", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassParser.parse", "method": "parse", "clazz": "ConfigurationClassParser", "package": "org.springframework.context.annotation", "position": "ConfigurationClassParser.java:202", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions", "method": "processConfigBeanDefinitions", "clazz": "ConfigurationClassPostProcessor", "package": "org.springframework.context.annotation", "position": "ConfigurationClassPostProcessor.java:316", "springtype": "PostProcessor"}, {"name": "org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry", "method": "postProcessBeanDefinitionRegistry", "clazz": "ConfigurationClassPostProcessor", "package": "org.springframework.context.annotation", "position": "ConfigurationClassPostProcessor.java:233", "springtype": "PostProcessor"}, {"name": "org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors", "method": "invokeBeanDefinitionRegistryPostProcessors", "clazz": "PostProcessorRegistrationDelegate", "package": "org.springframework.context.support", "position": "PostProcessorRegistrationDelegate.java:273", "springtype": "PostProcessorRegistrationDelegate"}, {"name": "org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors", "method": "invokeBeanFactoryPostProcessors", "clazz": "PostProcessorRegistrationDelegate", "package": "org.springframework.context.support", "position": "PostProcessorRegistrationDelegate.java:93", "springtype": "PostProcessorRegistrationDelegate"}, {"name": "org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors", "method": "invokeBeanFactoryPostProcessors", "clazz": "AbstractApplicationContext", "package": "org.springframework.context.support", "position": "AbstractApplicationContext.java:694", "springtype": "Context"}, {"name": "com.fjd.ssm.config.MultitenantDataSourceRegister.registerBeanDefinitions", "method": "registerBeanDefinitions", "clazz": "MultitenantDataSourceRegister", "package": "com.fjd.ssm.config", "position": "MultitenantDataSourceRegister.java:27", "springtype": "MultitenantDataSourceRegister"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1", "method": "lambda$loadBeanDefinitionsFromRegistrars$1", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:357", "springtype": "Reader"}, {"name": "java.util.LinkedHashMap.forEach", "method": "forEach", "clazz": "LinkedHashMap", "package": "java.util", "position": "LinkedHashMap.java:684", "springtype": "LinkedHashMap"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars", "method": "loadBeanDefinitionsFromRegistrars", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:356", "springtype": "Reader"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass", "method": "loadBeanDefinitionsForConfigurationClass", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:144", "springtype": "Reader"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions", "method": "loadBeanDefinitions", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:117", "springtype": "Reader"}], "links": [{"source": 1, "target": 0, "value": 1}, {"source": 2, "target": 1, "value": 1}, {"source": 3, "target": 2, "value": 1}, {"source": 4, "target": 3, "value": 1}, {"source": 5, "target": 4, "value": 1}, {"source": 6, "target": 5, "value": 1}, {"source": 7, "target": 6, "value": 2}, {"source": 8, "target": 7, "value": 2}, {"source": 9, "target": 8, "value": 2}, {"source": 10, "target": 9, "value": 2}, {"source": 11, "target": 10, "value": 1}, {"source": 12, "target": 11, "value": 1}, {"source": 13, "target": 12, "value": 6}, {"source": 15, "target": 14, "value": 1}, {"source": 16, "target": 15, "value": 1}, {"source": 17, "target": 16, "value": 1}, {"source": 18, "target": 17, "value": 1}, {"source": 19, "target": 18, "value": 1}, {"source": 6, "target": 19, "value": 1}, {"source": 20, "target": 10, "value": 1}, {"source": 21, "target": 20, "value": 1}, {"source": 12, "target": 21, "value": 1}, {"source": 23, "target": 22, "value": 1}, {"source": 24, "target": 23, "value": 1}, {"source": 25, "target": 24, "value": 1}, {"source": 26, "target": 25, "value": 1}, {"source": 27, "target": 26, "value": 1}, {"source": 28, "target": 27, "value": 1}, {"source": 12, "target": 28, "value": 1}, {"source": 30, "target": 29, "value": 1}, {"source": 31, "target": 30, "value": 1}, {"source": 32, "target": 31, "value": 3}, {"source": 33, "target": 32, "value": 3}, {"source": 34, "target": 33, "value": 3}, {"source": 12, "target": 34, "value": 3}, {"source": 35, "target": 0, "value": 1}, {"source": 36, "target": 35, "value": 1}, {"source": 37, "target": 36, "value": 1}, {"source": 38, "target": 37, "value": 1}, {"source": 39, "target": 38, "value": 1}, {"source": 40, "target": 39, "value": 1}, {"source": 41, "target": 40, "value": 1}, {"source": 42, "target": 41, "value": 1}, {"source": 43, "target": 42, "value": 2}, {"source": 44, "target": 43, "value": 2}, {"source": 45, "target": 44, "value": 2}, {"source": 46, "target": 45, "value": 2}, {"source": 31, "target": 46, "value": 2}, {"source": 47, "target": 0, "value": 1}, {"source": 48, "target": 47, "value": 1}, {"source": 49, "target": 48, "value": 1}, {"source": 50, "target": 49, "value": 1}, {"source": 51, "target": 50, "value": 1}, {"source": 52, "target": 51, "value": 1}, {"source": 42, "target": 52, "value": 1}]}
+
+
+
+
+</textarea>
+<button>Update</button>
+    
+  </div>
+  
+  
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="d3-sankey.js"></script>
+
+  <script>
+    var margin = {
+        top: 1,
+        right: 1,
+        bottom: 6,
+        left: 1
+      },
+      width = window.innerWidth - 20 - margin.left - margin.right,
+      height = 450 - margin.top - margin.bottom,
+      animDuration = 800;
+
+    var formatNumber = d3.format(",.0f"),
+      format = function(d) {
+        return formatNumber(d) + " TWh";
+      },
+      color = d3.scaleOrdinal(d3.schemeCategory20);
+
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var links = svg.append("g"),
+        nodes = svg.append("g");
+
+    var sankey = d3.sankey()
+      .nodeWidth(15)
+      .nodePadding(10)
+      .size([width, height])
+      .align('justify');
+
+    var path = sankey.link();
+
+    d3.json("https://gist.githubusercontent.com/mbostock/ca9a0bb7ba204d12974bca90acc507c0/raw/398136b7db83d7d7fd89181b080924eb76041692/energy.json", function(energy) {
+	
+energy={"nodes": [{"name": "org.springframework.beans.factory.support.DefaultListableBeanFactory.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "DefaultListableBeanFactory", "package": "org.springframework.beans.factory.support", "position": "DefaultListableBeanFactory.java:792", "springtype": "DefaultListableBeanFactory"}, {"name": "org.springframework.context.support.GenericApplicationContext.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "GenericApplicationContext", "package": "org.springframework.context.support", "position": "GenericApplicationContext.java:321", "springtype": "Context"}, {"name": "org.springframework.context.annotation.AnnotationConfigUtils.registerPostProcessor", "method": "registerPostProcessor", "clazz": "AnnotationConfigUtils", "package": "org.springframework.context.annotation", "position": "AnnotationConfigUtils.java:219", "springtype": "Utils"}, {"name": "org.springframework.context.annotation.AnnotationConfigUtils.registerAnnotationConfigProcessors", "method": "registerAnnotationConfigProcessors", "clazz": "AnnotationConfigUtils", "package": "org.springframework.context.annotation", "position": "AnnotationConfigUtils.java:164", "springtype": "Utils"}, {"name": "org.springframework.context.annotation.AnnotatedBeanDefinitionReader.<init>", "method": "<init>", "clazz": "AnnotatedBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "AnnotatedBeanDefinitionReader.java:87", "springtype": "Reader"}, {"name": "org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext.<init>", "method": "<init>", "clazz": "AnnotationConfigServletWebServerApplicationContext", "package": "org.springframework.boot.web.servlet.context", "position": "AnnotationConfigServletWebServerApplicationContext.java:73", "springtype": "Context"}, {"name": "sun.reflect.NativeConstructorAccessorImpl.newInstance0", "method": "newInstance0", "clazz": "NativeConstructorAccessorImpl", "package": "sun.reflect", "position": "Native Method", "springtype": "NativeConstructorAccessorImpl"}, {"name": "sun.reflect.NativeConstructorAccessorImpl.newInstance", "method": "newInstance", "clazz": "NativeConstructorAccessorImpl", "package": "sun.reflect", "position": "NativeConstructorAccessorImpl.java:62", "springtype": "NativeConstructorAccessorImpl"}, {"name": "sun.reflect.DelegatingConstructorAccessorImpl.newInstance", "method": "newInstance", "clazz": "DelegatingConstructorAccessorImpl", "package": "sun.reflect", "position": "DelegatingConstructorAccessorImpl.java:45", "springtype": "DelegatingConstructorAccessorImpl"}, {"name": "java.lang.reflect.Constructor.newInstance", "method": "newInstance", "clazz": "Constructor", "package": "java.lang.reflect", "position": "Constructor.java:423", "springtype": "Constructor"}, {"name": "org.springframework.beans.BeanUtils.instantiateClass", "method": "instantiateClass", "clazz": "BeanUtils", "package": "org.springframework.beans", "position": "BeanUtils.java:170", "springtype": "Utils"}, {"name": "org.springframework.boot.SpringApplication.createApplicationContext", "method": "createApplicationContext", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:595", "springtype": "Application"}, {"name": "org.springframework.boot.SpringApplication.run", "method": "run", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:321", "springtype": "Application"}, {"name": "com.fjd.ssm.SSMApplication.main", "method": "main", "clazz": "SSMApplication", "package": "com.fjd.ssm", "position": "SSMApplication.java:14", "springtype": "Application"}, {"name": "org.springframework.beans.factory.support.DefaultListableBeanFactory.registerSingleton", "method": "registerSingleton", "clazz": "DefaultListableBeanFactory", "package": "org.springframework.beans.factory.support", "position": "DefaultListableBeanFactory.java:953", "springtype": "DefaultListableBeanFactory"}, {"name": "org.springframework.boot.autoconfigure.condition.ConditionEvaluationReport.get", "method": "get", "clazz": "ConditionEvaluationReport", "package": "org.springframework.boot.autoconfigure.condition", "position": "ConditionEvaluationReport.java:173", "springtype": "ConditionEvaluationReport"}, {"name": "org.springframework.boot.autoconfigure.diagnostics.analyzer.NoSuchBeanDefinitionFailureAnalyzer.setBeanFactory", "method": "setBeanFactory", "clazz": "NoSuchBeanDefinitionFailureAnalyzer", "package": "org.springframework.boot.autoconfigure.diagnostics.analyzer", "position": "NoSuchBeanDefinitionFailureAnalyzer.java:70", "springtype": "NoSuchBeanDefinitionFailureAnalyzer"}, {"name": "org.springframework.boot.diagnostics.FailureAnalyzers.prepareAnalyzer", "method": "prepareAnalyzer", "clazz": "FailureAnalyzers", "package": "org.springframework.boot.diagnostics", "position": "FailureAnalyzers.java:98", "springtype": "FailureAnalyzers"}, {"name": "org.springframework.boot.diagnostics.FailureAnalyzers.prepareFailureAnalyzers", "method": "prepareFailureAnalyzers", "clazz": "FailureAnalyzers", "package": "org.springframework.boot.diagnostics", "position": "FailureAnalyzers.java:91", "springtype": "FailureAnalyzers"}, {"name": "org.springframework.boot.diagnostics.FailureAnalyzers.<init>", "method": "<init>", "clazz": "FailureAnalyzers", "package": "org.springframework.boot.diagnostics", "position": "FailureAnalyzers.java:66", "springtype": "FailureAnalyzers"}, {"name": "org.springframework.boot.SpringApplication.createSpringFactoriesInstances", "method": "createSpringFactoriesInstances", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:444", "springtype": "Application"}, {"name": "org.springframework.boot.SpringApplication.getSpringFactoriesInstances", "method": "getSpringFactoriesInstances", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:427", "springtype": "Application"}, {"name": "org.springframework.boot.context.config.DelegatingApplicationListener.onApplicationEvent", "method": "onApplicationEvent", "clazz": "DelegatingApplicationListener", "package": "org.springframework.boot.context.config", "position": "DelegatingApplicationListener.java:67", "springtype": "Listener"}, {"name": "org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener", "method": "doInvokeListener", "clazz": "SimpleApplicationEventMulticaster", "package": "org.springframework.context.event", "position": "SimpleApplicationEventMulticaster.java:172", "springtype": "Multicaster"}, {"name": "org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener", "method": "invokeListener", "clazz": "SimpleApplicationEventMulticaster", "package": "org.springframework.context.event", "position": "SimpleApplicationEventMulticaster.java:165", "springtype": "Multicaster"}, {"name": "org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent", "method": "multicastEvent", "clazz": "SimpleApplicationEventMulticaster", "package": "org.springframework.context.event", "position": "SimpleApplicationEventMulticaster.java:139", "springtype": "Multicaster"}, {"name": "org.springframework.boot.context.event.EventPublishingRunListener.contextLoaded", "method": "contextLoaded", "clazz": "EventPublishingRunListener", "package": "org.springframework.boot.context.event", "position": "EventPublishingRunListener.java:91", "springtype": "Listener"}, {"name": "org.springframework.boot.SpringApplicationRunListeners.contextLoaded", "method": "contextLoaded", "clazz": "SpringApplicationRunListeners", "package": "org.springframework.boot", "position": "SpringApplicationRunListeners.java:66", "springtype": "SpringApplicationRunListeners"}, {"name": "org.springframework.boot.SpringApplication.prepareContext", "method": "prepareContext", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:391", "springtype": "Application"}, {"name": "org.springframework.beans.factory.support.DefaultListableBeanFactory.registerResolvableDependency", "method": "registerResolvableDependency", "clazz": "DefaultListableBeanFactory", "package": "org.springframework.beans.factory.support", "position": "DefaultListableBeanFactory.java:608", "springtype": "DefaultListableBeanFactory"}, {"name": "org.springframework.context.support.AbstractApplicationContext.prepareBeanFactory", "method": "prepareBeanFactory", "clazz": "AbstractApplicationContext", "package": "org.springframework.context.support", "position": "AbstractApplicationContext.java:652", "springtype": "Context"}, {"name": "org.springframework.context.support.AbstractApplicationContext.refresh", "method": "refresh", "clazz": "AbstractApplicationContext", "package": "org.springframework.context.support", "position": "AbstractApplicationContext.java:525", "springtype": "Context"}, {"name": "org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh", "method": "refresh", "clazz": "ServletWebServerApplicationContext", "package": "org.springframework.boot.web.servlet.context", "position": "ServletWebServerApplicationContext.java:140", "springtype": "Context"}, {"name": "org.springframework.boot.SpringApplication.refresh", "method": "refresh", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:759", "springtype": "Application"}, {"name": "org.springframework.boot.SpringApplication.refreshContext", "method": "refreshContext", "clazz": "SpringApplication", "package": "org.springframework.boot", "position": "SpringApplication.java:395", "springtype": "Application"}, {"name": "org.springframework.beans.factory.support.BeanDefinitionReaderUtils.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "BeanDefinitionReaderUtils", "package": "org.springframework.beans.factory.support", "position": "BeanDefinitionReaderUtils.java:150", "springtype": "Utils"}, {"name": "org.springframework.context.annotation.ClassPathBeanDefinitionScanner.registerBeanDefinition", "method": "registerBeanDefinition", "clazz": "ClassPathBeanDefinitionScanner", "package": "org.springframework.context.annotation", "position": "ClassPathBeanDefinitionScanner.java:319", "springtype": "Scanner"}, {"name": "org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan", "method": "doScan", "clazz": "ClassPathBeanDefinitionScanner", "package": "org.springframework.context.annotation", "position": "ClassPathBeanDefinitionScanner.java:291", "springtype": "Scanner"}, {"name": "org.springframework.context.annotation.ComponentScanAnnotationParser.parse", "method": "parse", "clazz": "ComponentScanAnnotationParser", "package": "org.springframework.context.annotation", "position": "ComponentScanAnnotationParser.java:132", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass", "method": "doProcessConfigurationClass", "clazz": "ConfigurationClassParser", "package": "org.springframework.context.annotation", "position": "ConfigurationClassParser.java:288", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass", "method": "processConfigurationClass", "clazz": "ConfigurationClassParser", "package": "org.springframework.context.annotation", "position": "ConfigurationClassParser.java:245", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassParser.parse", "method": "parse", "clazz": "ConfigurationClassParser", "package": "org.springframework.context.annotation", "position": "ConfigurationClassParser.java:202", "springtype": "Parser"}, {"name": "org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions", "method": "processConfigBeanDefinitions", "clazz": "ConfigurationClassPostProcessor", "package": "org.springframework.context.annotation", "position": "ConfigurationClassPostProcessor.java:316", "springtype": "PostProcessor"}, {"name": "org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry", "method": "postProcessBeanDefinitionRegistry", "clazz": "ConfigurationClassPostProcessor", "package": "org.springframework.context.annotation", "position": "ConfigurationClassPostProcessor.java:233", "springtype": "PostProcessor"}, {"name": "org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors", "method": "invokeBeanDefinitionRegistryPostProcessors", "clazz": "PostProcessorRegistrationDelegate", "package": "org.springframework.context.support", "position": "PostProcessorRegistrationDelegate.java:273", "springtype": "PostProcessorRegistrationDelegate"}, {"name": "org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors", "method": "invokeBeanFactoryPostProcessors", "clazz": "PostProcessorRegistrationDelegate", "package": "org.springframework.context.support", "position": "PostProcessorRegistrationDelegate.java:93", "springtype": "PostProcessorRegistrationDelegate"}, {"name": "org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors", "method": "invokeBeanFactoryPostProcessors", "clazz": "AbstractApplicationContext", "package": "org.springframework.context.support", "position": "AbstractApplicationContext.java:694", "springtype": "Context"}, {"name": "com.fjd.ssm.config.MultitenantDataSourceRegister.registerBeanDefinitions", "method": "registerBeanDefinitions", "clazz": "MultitenantDataSourceRegister", "package": "com.fjd.ssm.config", "position": "MultitenantDataSourceRegister.java:27", "springtype": "MultitenantDataSourceRegister"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1", "method": "lambda$loadBeanDefinitionsFromRegistrars$1", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:357", "springtype": "Reader"}, {"name": "java.util.LinkedHashMap.forEach", "method": "forEach", "clazz": "LinkedHashMap", "package": "java.util", "position": "LinkedHashMap.java:684", "springtype": "LinkedHashMap"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars", "method": "loadBeanDefinitionsFromRegistrars", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:356", "springtype": "Reader"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass", "method": "loadBeanDefinitionsForConfigurationClass", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:144", "springtype": "Reader"}, {"name": "org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions", "method": "loadBeanDefinitions", "clazz": "ConfigurationClassBeanDefinitionReader", "package": "org.springframework.context.annotation", "position": "ConfigurationClassBeanDefinitionReader.java:117", "springtype": "Reader"}], "links": [{"source": 1, "target": 0, "value": 1}, {"source": 2, "target": 1, "value": 1}, {"source": 3, "target": 2, "value": 1}, {"source": 4, "target": 3, "value": 1}, {"source": 5, "target": 4, "value": 1}, {"source": 6, "target": 5, "value": 1}, {"source": 7, "target": 6, "value": 2}, {"source": 8, "target": 7, "value": 2}, {"source": 9, "target": 8, "value": 2}, {"source": 10, "target": 9, "value": 2}, {"source": 11, "target": 10, "value": 1}, {"source": 12, "target": 11, "value": 1}, {"source": 13, "target": 12, "value": 6}, {"source": 15, "target": 14, "value": 1}, {"source": 16, "target": 15, "value": 1}, {"source": 17, "target": 16, "value": 1}, {"source": 18, "target": 17, "value": 1}, {"source": 19, "target": 18, "value": 1}, {"source": 6, "target": 19, "value": 1}, {"source": 20, "target": 10, "value": 1}, {"source": 21, "target": 20, "value": 1}, {"source": 12, "target": 21, "value": 1}, {"source": 23, "target": 22, "value": 1}, {"source": 24, "target": 23, "value": 1}, {"source": 25, "target": 24, "value": 1}, {"source": 26, "target": 25, "value": 1}, {"source": 27, "target": 26, "value": 1}, {"source": 28, "target": 27, "value": 1}, {"source": 12, "target": 28, "value": 1}, {"source": 30, "target": 29, "value": 1}, {"source": 31, "target": 30, "value": 1}, {"source": 32, "target": 31, "value": 3}, {"source": 33, "target": 32, "value": 3}, {"source": 34, "target": 33, "value": 3}, {"source": 12, "target": 34, "value": 3}, {"source": 35, "target": 0, "value": 1}, {"source": 36, "target": 35, "value": 1}, {"source": 37, "target": 36, "value": 1}, {"source": 38, "target": 37, "value": 1}, {"source": 39, "target": 38, "value": 1}, {"source": 40, "target": 39, "value": 1}, {"source": 41, "target": 40, "value": 1}, {"source": 42, "target": 41, "value": 1}, {"source": 43, "target": 42, "value": 2}, {"source": 44, "target": 43, "value": 2}, {"source": 45, "target": 44, "value": 2}, {"source": 46, "target": 45, "value": 2}, {"source": 31, "target": 46, "value": 2}, {"source": 47, "target": 0, "value": 1}, {"source": 48, "target": 47, "value": 1}, {"source": 49, "target": 48, "value": 1}, {"source": 50, "target": 49, "value": 1}, {"source": 51, "target": 50, "value": 1}, {"source": 52, "target": 51, "value": 1}, {"source": 42, "target": 52, "value": 1}]}
+
+
+
+
+
+
+
+
+
+
+      sankey
+        .nodes(energy.nodes)
+        .links(energy.links)
+        .layout(32);
+
+      d3Digest();
+    });
+
+    function d3Digest() {
+
+      var link = links.selectAll(".link")
+        .data(sankey.links());
+
+      var newLink = link.enter().append("path")
+          .attr("class", "link")
+          .style("stroke-width", function (d) {
+            return Math.max(1, d.dy) + 'px';
+          });
+
+      newLink.append("title")
+        .text(function (d) {
+          return d.source.name + " → " + d.target.name + "\n" + format(d.value);
+        });
+
+      link = newLink.merge(link);
+
+      link.transition().duration(animDuration)
+        .attr("d", path)
+        .style("stroke-width", function (d) {
+          return Math.max(1, d.dy) + 'px';
+        });
+
+      var node = nodes.selectAll(".node")
+        .data(sankey.nodes());
+
+      var newNode = node.enter().append("g")
+        .attr("class", "node");
+
+      newNode.attr("transform", function (d) {
+        return "translate(" + d.x + "," + d.y + ")";
+      });
+
+      node.transition().duration(animDuration)
+        .attr("transform", function (d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        });
+
+      node = newNode.merge(node);
+
+      newNode.append('rect');
+      newNode.append('text');
+
+      newNode.select("rect")
+        .attr("width", sankey.nodeWidth())
+        .attr("height", function (d) {
+          return d.dy;
+        })
+        .append("title")
+          .text(function (d) {
+            return d.name + "\n" + format(d.value);
+          });
+
+      node.select("rect")
+        .style("fill", function (d) {
+          return d.color = color(d.springtype);//d.name.replace(/ .*/, ""));
+        })
+        .style("stroke", function (d) {
+          return d3.rgb(d.color).darker(2);
+        })
+        .transition().duration(animDuration)
+          .attr("height", function (d) {
+            return d.dy;
+          });
+
+      newNode.select("text")
+        .attr("dy", ".35em")
+        .attr("transform", null)
+        .attr("y", function (d) {
+          return d.dy / 2;
+        });
+
+      node.select("text")
+        .text(function (d) {
+		///=======================================decide display name==========
+          return d.clazz+' '+d.method;
+        })
+        .attr("x", -6)
+        .attr("text-anchor", "end")
+        .filter(function (d) {
+          return d.x < width / 2;
+        })
+          .attr("x", 6 + sankey.nodeWidth())
+          .attr("text-anchor", "start");
+
+      node.select('text').transition().duration(animDuration)
+        .attr("y", function (d) {
+          return d.dy / 2;
+        });
+    }
+
+    // Radio button change
+    d3.selectAll('.sankey-align').on('change', function() {
+      sankey.align(this.value)
+            .layout(32);
+      d3Digest();
+    });
+	
+	d3.select("button").on("click", function() {
+		// 新数据集
+		energy=JSON.parse(document.getElementById("dataarea").value);
+		
+		console.log(energy)
+
+
+
+
+;
+		// 更新所有矩形
+		sankey
+        .nodes(energy.nodes)
+        .links(energy.links)
+        .layout(32);
+
+      d3Digest();
+	});
+
+  </script>
