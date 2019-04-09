@@ -121,13 +121,15 @@ class node:
 if __name__ == '__main__':
     node_dict={}
     link_dict={}
-
+    read_callstack(node_dict,link_dict,'./callstacks/init/startEvent.txt')
     read_callstack(node_dict,link_dict,'./callstacks/init/registerBeanDefinition.txt')
     read_callstack(node_dict,link_dict,'./callstacks/init/registerSingleton.txt')
     read_callstack(node_dict,link_dict,'./callstacks/init/onApplicationEvent.txt')
     read_callstack(node_dict,link_dict,'./callstacks/init/registerResolvableDependency.txt')
     read_callstack(node_dict,link_dict,'./callstacks/init/multitenantConfigurationBeanDefinitionRegister.txt')
     read_callstack(node_dict,link_dict,'./callstacks/init/autowireConfig.txt')
+    read_callstack(node_dict,link_dict,'./callstacks/init/beanTypeRegistry.txt')
+
     result_dict=convert_to_sankey_json(node_dict,link_dict)
     print(result_dict)
     j1 = json.dumps(result_dict)
